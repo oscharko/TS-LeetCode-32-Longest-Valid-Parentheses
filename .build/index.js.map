@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../index.ts"],
+  "sourcesContent": ["let s: string = \"(()(())\";\n\nconst longestValidParentheses = function (s: string): number{\n  /*\n  v description:\n    temporary = v[0]\n    storage = v[1]\n    helper = v[2]\n    target = v[3]\n  */\n  let v: [number, number[], any, number] = [\n    0,\n    Array(s.length).fill(0),\n    function (index: number): number{\n      return index >= 0 ? v[1][index] : 0;\n    },\n    0,\n  ];\n\n  for (let i: number = 1; i < s.length; i++) {\n    if (s[i] === \")\") {\n      if (s[i - 1] === \"(\") {\n        v[1][i] = v[2](i - 2) + 2;\n      } else {\n        v[0] = i - v[1][i - 1] - 1;\n        if (v[0] >= 0 && s[v[0]] === \"(\") {\n          v[1][i] = v[1][i - 1] + v[2](v[0] - 1) + 2;\n        }\n      }\n      v[3] = Math.max(...v[1]);\n    }\n  }\n  return v[3];\n};\n\nconsole.log(longestValidParentheses(s));"],
+  "mappings": "AAAA,IAAI,IAAY;AAEhB,MAAM,0BAA0B,SAAU,IAAkB;AAQ1D,MAAI,IAAqC;AAAA,IACvC;AAAA,IACA,MAAM,GAAE,QAAQ,KAAK;AAAA,IACrB,SAAU,OAAsB;AAC9B,aAAO,SAAS,IAAI,EAAE,GAAG,SAAS;AAAA;AAAA,IAEpC;AAAA;AAGF,WAAS,IAAY,GAAG,IAAI,GAAE,QAAQ,KAAK;AACzC,QAAI,GAAE,OAAO,KAAK;AAChB,UAAI,GAAE,IAAI,OAAO,KAAK;AACpB,UAAE,GAAG,KAAK,EAAE,GAAG,IAAI,KAAK;AAAA,aACnB;AACL,UAAE,KAAK,IAAI,EAAE,GAAG,IAAI,KAAK;AACzB,YAAI,EAAE,MAAM,KAAK,GAAE,EAAE,QAAQ,KAAK;AAChC,YAAE,GAAG,KAAK,EAAE,GAAG,IAAI,KAAK,EAAE,GAAG,EAAE,KAAK,KAAK;AAAA;AAAA;AAG7C,QAAE,KAAK,KAAK,IAAI,GAAG,EAAE;AAAA;AAAA;AAGzB,SAAO,EAAE;AAAA;AAGX,QAAQ,IAAI,wBAAwB;",
+  "names": []
+}
