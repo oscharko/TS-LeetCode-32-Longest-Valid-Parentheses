@@ -8,7 +8,7 @@ const longestValidParentheses = function (s: string): number{
     helper = v[2]
     target = v[3]
   */
-  let v: [number, number[], any, number] = [
+  let v: [number, number[], Function, number] = [
     0,
     Array(s.length).fill(0),
     function (index: number): number{
